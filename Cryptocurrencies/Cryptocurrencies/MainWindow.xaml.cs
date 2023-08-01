@@ -23,6 +23,27 @@ namespace Cryptocurrencies
         public MainWindow()
         {
             InitializeComponent();
+            NavigateToHomePage();
+        }
+
+        private void NavigateToHomePage()
+        {
+            MainContentFrame.Navigate(new Uri("Pages/HomePage.xaml", UriKind.Relative));
+        }
+
+        private void NavigateToSecondPage_DetailInfo()
+        {
+            MainContentFrame.Navigate(new Uri("Pages/ShowDetail_SecondPage.xaml", UriKind.Relative));
+        }
+
+        private void bt_1_Click(object sender, RoutedEventArgs e)
+        {
+            NavigateToHomePage();
+        }
+
+        private void bt_2_Click(object sender, RoutedEventArgs e)
+        {
+            NavigateToSecondPage_DetailInfo();
         }
     }
 }

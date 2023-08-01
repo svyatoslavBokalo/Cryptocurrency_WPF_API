@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
-namespace TestAPi.APIClasses
+namespace Cryptocurrencies.APIClasses
 {
     public class Cryptocurrency : INotifyPropertyChanged
     {

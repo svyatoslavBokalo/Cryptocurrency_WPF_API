@@ -7,6 +7,8 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-
+        <Frame x:Name="MainContentFrame" NavigationUIVisibility="Hidden"/>
+        <Button x:Name="bt_1" Content="1" HorizontalAlignment="Left" Margin="280,82,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.751,1.054" Click="bt_1_Click"/>
+        <Button x:Name="bt_2" Content="2" HorizontalAlignment="Left" Margin="300,82,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.751,1.054" Click="bt_2_Click"/>
     </Grid>
 </Window>

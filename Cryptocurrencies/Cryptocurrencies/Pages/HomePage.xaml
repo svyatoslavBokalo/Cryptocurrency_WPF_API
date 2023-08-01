@@ -1,0 +1,28 @@
+﻿<Page x:Class="Cryptocurrencies.Pages.HomePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Cryptocurrencies.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="HomePage">
+
+    <Grid>
+        <Button x:Name="BT_count" Content="Show" HorizontalAlignment="Left" Margin="140,123,0,0" VerticalAlignment="Top" Height="22" Click="BT_count_Click_1" />
+        <Label Content="Count" HorizontalAlignment="Left" Margin="10,119,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.117,-0.026"/>
+        <TextBox x:Name="CountInput" HorizontalAlignment="Left" Margin="70,123,0,0" TextWrapping="Wrap" Text="Input" VerticalAlignment="Top" Width="51" Height="22"/>
+        <ListView x:Name="LVCryptocurrency" d:ItemsSource="{d:SampleData ItemCount=10}" Margin="0,150,0,63">
+            <ListView.View>
+                <GridView x:Name="GVinLVCrypto">
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=id}" Header="id" Width="100"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=rank}" Header="rank" Width="100"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=name}" Header="name" Width="100"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=symbol}" Header="symbol" Width="100"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=priceUsd}" Header="priceUsd" Width="200"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+    </Grid>
+</Page>

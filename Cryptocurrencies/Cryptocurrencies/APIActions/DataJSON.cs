@@ -4,10 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TestAPi
+namespace Cryptocurrencies.APIActions
 {
+    //class which we use for getting data from API
     internal class DataJSON<T>
     {
+        
         public List<T> data { get; set; }
         public decimal timestamp { get; set; }
 

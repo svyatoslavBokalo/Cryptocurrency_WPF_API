@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 C:\Users\Lenovo\source\MyGit\Cryptocurrency_WPF_API\Cryptocurrencies\Cryptocurrencies\App.xaml
-11407045341
+31885279545
 
-15-1206824632
+18-1968924810
 194618410957
-MainWindow.xaml;
+MainWindow.xaml;Pages\HomePage.xaml;Pages\ShowDetail_SecondPage.xaml;
 
-False
+True
 
