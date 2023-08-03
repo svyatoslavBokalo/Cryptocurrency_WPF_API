@@ -8,17 +8,41 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ShowDetail_SecondPage">
 
-    <Grid>
-        <ListView x:Name="LVDetail" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,203,0,10">
+    <Grid Margin="0,10,0,0">
+        <ListView x:Name="LVDetail" d:ItemsSource="{d:SampleData ItemCount=1}" Margin="1,165,-1,188">
             <ListView.View>
-                <GridView x:Name="GVinLVCrypto">
-                    <GridViewColumn DisplayMemberBinding="{Binding Path=exchangeId}" Header="Id" Width="100"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding Path=name}" Header="name" Width="100"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding Path=name}" Header="name" Width="100"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding Path=symbol}" Header="symbol" Width="100"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding Path=priceUsd}" Header="priceUsd" Width="200"/>
+                <GridView x:Name="GVinLVDetail">
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=rank}" Header="rank" Width="35"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=symbol}" Header="symbol" Width="50"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=name}" Header="name" Width="75"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=volumeUsd24Hr}" Header="volume usd for 24 HR" Width="200"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=priceUsd}" Header="price Usd" Width="150"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=changePercent24Hr}" Header="change price" Width="150"/>
                 </GridView>
             </ListView.View>
         </ListView>
+        <TextBox x:Name="tb_forSearch" HorizontalAlignment="Left" Margin="133,134,0,0" TextWrapping="Wrap" Text="Input name" VerticalAlignment="Top" Width="120" Height="26"/>
+        <Label Content="Input name of crypto" HorizontalAlignment="Left" Margin="1,134,0,0" VerticalAlignment="Top" Width="127"/>
+        <Button x:Name="bt_search" Content="Button" HorizontalAlignment="Left" Margin="279,134,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.525,0.576" Height="26" Click="bt_search_Click"/>
+        <Button x:Name="BT_count" Content="Show" HorizontalAlignment="Left" Margin="134,225,0,0" VerticalAlignment="Top" Height="22" Click="BT_count_Click" />
+        <Label Content="Count" HorizontalAlignment="Left" Margin="4,221,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.117,-0.026"/>
+        <TextBox x:Name="CountInput" HorizontalAlignment="Left" Margin="64,225,0,0" TextWrapping="Wrap" Text="10" VerticalAlignment="Top" Width="50" Height="22"/>
+        <ListView x:Name="LVExchanges" d:ItemsSource="{d:SampleData ItemCount=5}" Width="800" Margin="0,252,0,10">
+            <ListView.View>
+                <GridView x:Name="GVinLVExchanges">
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=trust_score_rank}" Header="rank" Width="35"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=id}" Header="id" Width="75"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=name}" Header="name" Width="100"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=year_established}" Header="year" Width="40"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=country}" Header="country" Width="75"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=trade_volume_24h_btc}" Header="volume btc for 24h" Width="125"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=has_trading_incentive}" Header="socket" Width="45"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=url}" Header="url" Width="100"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+
+
     </Grid>
 </Page>

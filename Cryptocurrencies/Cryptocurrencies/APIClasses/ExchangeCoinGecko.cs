@@ -3,7 +3,7 @@ using System.ComponentModel;
 
 namespace TestAPi.APIClasses
 {
-    public class EchangeCoinGecko : INotifyPropertyChanged
+    public class ExchangeCoinGecko : INotifyPropertyChanged
     {
         private string? _id;
         private string? _name;
@@ -176,12 +176,12 @@ namespace TestAPi.APIClasses
             }
         }
 
-        public EchangeCoinGecko()
+        public ExchangeCoinGecko()
         {
             // Default constructor
         }
 
-        public EchangeCoinGecko(string id, string name, int year_established, string country, string description,
+        public ExchangeCoinGecko(string id, string name, int year_established, string country, string description,
             string url, string image, bool has_trading_incentive, int trust_score, int trust_score_rank,
             double trade_volume_24h_btc, double trade_volume_24h_btc_normalized)
         {

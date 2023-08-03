@@ -13,6 +13,10 @@ namespace Cryptocurrencies.APIActions
         public List<T> data { get; set; }
         public decimal timestamp { get; set; }
 
+        public int Count()
+        {
+            return data.Count;
+        }
         public override string? ToString()
         {
             string res = "";

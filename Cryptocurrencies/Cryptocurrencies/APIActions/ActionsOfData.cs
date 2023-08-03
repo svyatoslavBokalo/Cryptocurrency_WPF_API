@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Reflection;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -15,10 +16,11 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Cryptocurrencies.APIActions;
+using Cryptocurrencies.APIClasses;
 
 namespace Cryptocurrencies.APIActions
 {
-    public class ActionsOfData
+    static public class ActionsOfData
     {
         //for sorting data that depends on the type that we use
         static public ObservableCollection<T> Sorting<T>(ObservableCollection<T> lst, string nameOfProperty = "name")
@@ -32,14 +34,32 @@ namespace Cryptocurrencies.APIActions
             return sortedList;
         }
 
+        static public async Task<ObservableCollection<Cryptocurrency>> Search(string name = "bitcoin")
+        {
+            Task<DataJSON<Cryptocurrency>> data = APIClient<DataJSON<Cryptocurrency>>.GetGeneralAsync(GeneralConst.СryptocurrencyURL);
+            if (data != null)
+            {
+                var info = await data;
+                if (info != null && info.data != null)
+                {
+                    Cryptocurrency? searchItem = info.data.FirstOrDefault(el => el.name.ToLower() == name.ToLower());
+
+                    ObservableCollection<Cryptocurrency> result = new ObservableCollection<Cryptocurrency>();
+                    result.Add(searchItem);
+                    return result;
+                }
+            }
+            return null;
+        }
 
         //this method for getting data 
         static public async Task<ObservableCollection<T>> GetDataFromCoinCap<T>(string url, int count = 10)
         {
-            Task<DataJSON<T>> data = APIClient<T>.GetGeneralCoinCapAsync(url);
+            //Task<DataJSON<T>> data = APIClient<T>.GetGeneralCoinCapAsync(url);
+            Task<DataJSON<T>> data = APIClient<DataJSON<T>>.GetGeneralAsync(url);
             if (data != null)
             {
-                var result = await data;
+                DataJSON<T> result = await data;
                 if (result != null && result.data != null)
                 {
                     ObservableCollection<T> items = new ObservableCollection<T>();
@@ -78,7 +98,8 @@ namespace Cryptocurrencies.APIActions
 
         static public async Task<ObservableCollection<T>> GetDataCoinGecko<T>(string url, int count = 10)
         {
-            Task<T[]>? data = APIClient<T>.GetGeneralCoinGeckoAsync(url);
+            //Task<T[]>? data = APIClient<T>.GetGeneralCoinGeckoAsync(url);
+            Task<T[]>? data = APIClient<T[]>.GetGeneralAsync(url);
             if (data != null)
             {
                 var result = await data;
@@ -133,54 +154,8 @@ namespace Cryptocurrencies.APIActions
                     Width = 100
                 });
             }
-            /*
-             * it's for add button to gridview
-             */
-            //GridViewColumn buttonColumn = new GridViewColumn
-            //{
-            //    Header = "Actions",
-            //    Width = 100
-            //};
-
-            //FrameworkElementFactory buttonFactory = new FrameworkElementFactory(typeof(Button));
-            //buttonFactory.SetValue(Button.ContentProperty, "Click");
-            //buttonFactory.AddHandler(Button.ClickEvent, new RoutedEventHandler(Button_Click));
-
-            //DataTemplate buttonTemplate = new DataTemplate();
-            //buttonTemplate.VisualTree = buttonFactory;
-
-            //buttonColumn.CellTemplate = buttonTemplate;
-            //gridView.Columns.Add(buttonColumn);
-
             lstView.View = gridView;
 
         }
-        // це для того щоб додати кнопку до GridView з певною подією.
-
-        //static private void Button_Click(object sender, RoutedEventArgs e)
-        //{
-        //    // Код обробки події кнопки
-        //    // Ви можете отримати об'єкт, пов'язаний з рядком, використовуючи дані з елемента GridViewRowPresenter
-        //    // Наприклад:
-        //    Button button = (Button)sender;
-        //    GridViewRowPresenter rowPresenter = FindVisualParent<GridViewRowPresenter>(button);
-        //    if (rowPresenter != null)
-        //    {
-        //        Cryptocurrency item = (Cryptocurrency)rowPresenter.DataContext;
-        //        // Виконайте потрібні дії з об'єктом Cryptocurrency
-        //    }
-        //}
-
-        //private static T FindVisualParent<T>(DependencyObject child) where T : DependencyObject
-        //{
-        //    DependencyObject parentObject = VisualTreeHelper.GetParent(child);
-        //    if (parentObject == null)
-        //        return null;
-
-        //    if (parentObject is T parent)
-        //        return parent;
-        //    else
-        //        return FindVisualParent<T>(parentObject);
-        //}
     }
 }

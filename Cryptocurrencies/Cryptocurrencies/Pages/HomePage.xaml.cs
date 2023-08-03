@@ -41,7 +41,6 @@ namespace Cryptocurrencies.Pages
         {
             Crypto = new ObservableCollection<Cryptocurrency>();
             Crypto = await ActionsOfData.GetDataFromCoinCap<Cryptocurrency>(GeneralConst.СryptocurrencyURL, count);
-            //ActionsOfData.ChangeListView<Cryptocurrency>(ref LVCryptocurrency);
             LVCryptocurrency.ItemsSource = Crypto;
         }
 
